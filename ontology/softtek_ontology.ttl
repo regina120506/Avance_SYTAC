@@ -1,0 +1,165 @@
+@prefix ex:   <http://softtek.example/kms#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# =====================================================================
+# Softtek - Knowledge Management Ontology (v0.1)
+# =====================================================================
+
+<http://softtek.example/kms> a owl:Ontology ;
+    rdfs:label "Softtek KMS ontology" .
+
+# ---------- 1. Main domain concepts (classes) ----------
+ex:Organization a owl:Class ; rdfs:label "Organization" .
+ex:Department   a owl:Class ; rdfs:label "Department" .
+ex:Employee     a owl:Class ; rdfs:label "Employee" .
+ex:Client       a owl:Class ; rdfs:label "Client" .
+ex:Project      a owl:Class ; rdfs:label "Project" .
+ex:System       a owl:Class ; rdfs:label "System / Service" .
+ex:Technology   a owl:Class ; rdfs:label "Technology" .
+ex:Skill        a owl:Class ; rdfs:label "Skill" .
+ex:Process      a owl:Class ; rdfs:label "Business process" .
+ex:Incident     a owl:Class ; rdfs:label "Incident" .
+ex:Risk         a owl:Class ; rdfs:label "Risk" .
+ex:LessonLearned a owl:Class ; rdfs:label "Lesson learned" .
+ex:Concept      a owl:Class ; rdfs:label "Knowledge concept (topic)" .
+
+# ---------- 2. Document types (class hierarchy) ----------
+ex:Document a owl:Class ; rdfs:label "Document" .
+ex:TechnicalDocumentation a owl:Class ; rdfs:subClassOf ex:Document ; rdfs:label "Technical Documentation" .
+ex:PolicyProcedure        a owl:Class ; rdfs:subClassOf ex:Document ; rdfs:label "Policies & Procedures" .
+ex:ProjectReport          a owl:Class ; rdfs:subClassOf ex:Document ; rdfs:label "Project Reports" .
+ex:TrainingManual         a owl:Class ; rdfs:subClassOf ex:Document ; rdfs:label "Training Manuals" .
+ex:IncidentReport         a owl:Class ; rdfs:subClassOf ex:Document ; rdfs:label "Incident Reports" .
+
+# ---------- 3. Relationships between concepts (object properties) ----------
+ex:hasDepartment a owl:ObjectProperty ; rdfs:domain ex:Organization ; rdfs:range ex:Department .
+ex:memberOf      a owl:ObjectProperty ; rdfs:domain ex:Employee ; rdfs:range ex:Department .
+ex:worksOn       a owl:ObjectProperty ; rdfs:domain ex:Employee ; rdfs:range ex:Project .
+ex:deliveredFor  a owl:ObjectProperty ; rdfs:domain ex:Project ; rdfs:range ex:Client .
+ex:buildsSystem  a owl:ObjectProperty ; rdfs:domain ex:Project ; rdfs:range ex:System .
+ex:usesTechnology a owl:ObjectProperty ; rdfs:domain ex:System ; rdfs:range ex:Technology .
+ex:hasSkill      a owl:ObjectProperty ; rdfs:domain ex:Employee ; rdfs:range ex:Skill .
+ex:skillIn       a owl:ObjectProperty ; rdfs:domain ex:Skill ; rdfs:range ex:Technology .
+ex:affects       a owl:ObjectProperty ; rdfs:domain ex:Incident ; rdfs:range ex:System .
+ex:hasRisk       a owl:ObjectProperty ; rdfs:domain ex:Project ; rdfs:range ex:Risk .
+ex:resultsIn     a owl:ObjectProperty ; rdfs:domain ex:Incident ; rdfs:range ex:LessonLearned .
+ex:ownsProcess   a owl:ObjectProperty ; rdfs:domain ex:Department ; rdfs:range ex:Process .
+
+# ---------- 4. Relationships between documents and concepts ----------
+ex:describes   a owl:ObjectProperty ; rdfs:domain ex:TechnicalDocumentation ; rdfs:range ex:System .
+ex:governs     a owl:ObjectProperty ; rdfs:domain ex:PolicyProcedure ; rdfs:range ex:Process .
+ex:reportsOn   a owl:ObjectProperty ; rdfs:domain ex:ProjectReport ; rdfs:range ex:Project .
+ex:teaches     a owl:ObjectProperty ; rdfs:domain ex:TrainingManual ; rdfs:range ex:Skill .
+ex:documents   a owl:ObjectProperty ; rdfs:domain ex:IncidentReport ; rdfs:range ex:Incident .
+ex:about       a owl:ObjectProperty ; rdfs:domain ex:Document ; rdfs:range ex:Concept .
+ex:authoredBy  a owl:ObjectProperty ; rdfs:domain ex:Document ; rdfs:range ex:Employee .
+ex:ownedBy     a owl:ObjectProperty ; rdfs:domain ex:Document ; rdfs:range ex:Department .
+ex:references  a owl:ObjectProperty ; rdfs:domain ex:Document ; rdfs:range ex:Document .
+ex:updates     a owl:ObjectProperty ; rdfs:domain ex:LessonLearned ; rdfs:range ex:Document .
+ex:docId       a owl:DatatypeProperty ; rdfs:domain ex:Document ; rdfs:range xsd:string .
+
+# ---------- 5. Concept vocabulary (SKOS) - also used for query expansion ----------
+ex:Outage a ex:Concept, skos:Concept ; skos:prefLabel "outage" ;
+    skos:altLabel "went down", "down", "unavailable" ; skos:broader ex:IncidentConcept .
+ex:IncidentConcept a ex:Concept, skos:Concept ; skos:prefLabel "incident" ;
+    skos:altLabel "broke", "failure" .
+ex:RemoteWork a ex:Concept, skos:Concept ; skos:prefLabel "remote work" ;
+    skos:altLabel "home", "work from home", "telework" ; skos:broader ex:PolicyConcept .
+ex:PolicyConcept a ex:Concept, skos:Concept ; skos:prefLabel "policy" ;
+    skos:altLabel "rules", "regulation" .
+ex:Learning a ex:Concept, skos:Concept ; skos:prefLabel "training" ;
+    skos:altLabel "learn", "class", "tutorial" .
+ex:Budget a ex:Concept, skos:Concept ; skos:prefLabel "budget" ;
+    skos:altLabel "money", "over budget", "cost overrun" .
+ex:Authentication a ex:Concept, skos:Concept ; skos:prefLabel "authentication" ;
+    skos:altLabel "login", "sign in" ; skos:broader ex:InformationSecurity .
+ex:InformationSecurity a ex:Concept, skos:Concept ; skos:prefLabel "security" ;
+    skos:altLabel "cybersecurity", "infosec" .
+ex:Deployment a ex:Concept, skos:Concept ; skos:prefLabel "deployment" ;
+    skos:altLabel "release", "go live" .
+
+# ---------- 6. Instances (sample knowledge graph) ----------
+ex:Softtek a ex:Organization ; rdfs:label "Softtek" ;
+    ex:hasDepartment ex:Engineering, ex:CloudOps, ex:PeopleLearning, ex:Compliance, ex:PMO .
+ex:Engineering    a ex:Department ; rdfs:label "Engineering" .
+ex:CloudOps       a ex:Department ; rdfs:label "Cloud Operations" ; ex:ownsProcess ex:IncidentManagement, ex:ChangeManagement .
+ex:PeopleLearning a ex:Department ; rdfs:label "People & Learning" ; ex:ownsProcess ex:Onboarding .
+ex:Compliance     a ex:Department ; rdfs:label "Compliance" ; ex:ownsProcess ex:AccessManagement, ex:DataProtection .
+ex:PMO            a ex:Department ; rdfs:label "Project Management Office" .
+
+ex:IncidentManagement a ex:Process ; rdfs:label "Incident management" .
+ex:ChangeManagement   a ex:Process ; rdfs:label "Change management" .
+ex:Onboarding         a ex:Process ; rdfs:label "Employee onboarding" .
+ex:AccessManagement   a ex:Process ; rdfs:label "Access management" .
+ex:DataProtection     a ex:Process ; rdfs:label "Personal data protection" .
+ex:RemoteWorkProcess  a ex:Process ; rdfs:label "Remote work" .
+
+ex:RetailCo a ex:Client ; rdfs:label "RetailCo (client)" .
+ex:RetailPlatform a ex:Project ; rdfs:label "Retail platform project" ;
+    ex:deliveredFor ex:RetailCo ; ex:buildsSystem ex:PaymentsAPI, ex:InventoryService ;
+    ex:hasRisk ex:PaymentProviderDelay .
+ex:MobileBanking a ex:Project ; rdfs:label "Mobile banking project" ; ex:hasRisk ex:RegulatoryScope .
+ex:PaymentProviderDelay a ex:Risk ; rdfs:label "Payment provider integration delay" .
+ex:RegulatoryScope      a ex:Risk ; rdfs:label "Extra regulatory scope" .
+
+ex:PaymentsAPI       a ex:System ; rdfs:label "Payments API" ; ex:usesTechnology ex:OAuth2, ex:Kubernetes .
+ex:InventoryService  a ex:System ; rdfs:label "Inventory service" ; ex:usesTechnology ex:PostgreSQL, ex:Kubernetes .
+ex:ProductCatalog    a ex:System ; rdfs:label "Product catalog" ; ex:usesTechnology ex:Redis .
+ex:Kubernetes a ex:Technology ; rdfs:label "Kubernetes" .
+ex:PostgreSQL a ex:Technology ; rdfs:label "PostgreSQL" .
+ex:Redis      a ex:Technology ; rdfs:label "Redis" .
+ex:OAuth2     a ex:Technology ; rdfs:label "OAuth2 / OpenID Connect" .
+
+ex:KubernetesSkill a ex:Skill ; rdfs:label "Kubernetes operation" ; ex:skillIn ex:Kubernetes .
+ex:SecurityAwareness a ex:Skill ; rdfs:label "Security awareness" .
+
+ex:Ana a ex:Employee ; rdfs:label "Ana (SRE)" ; ex:memberOf ex:CloudOps ; ex:worksOn ex:RetailPlatform ; ex:hasSkill ex:KubernetesSkill .
+ex:Luis a ex:Employee ; rdfs:label "Luis (Project manager)" ; ex:memberOf ex:PMO ; ex:worksOn ex:RetailPlatform, ex:MobileBanking .
+
+ex:PaymentsOutage a ex:Incident ; rdfs:label "Payments API outage (47 min)" ;
+    ex:affects ex:PaymentsAPI ; ex:resultsIn ex:LL_CertRenewal .
+ex:DbDegradation a ex:Incident ; rdfs:label "Inventory DB degradation" ;
+    ex:affects ex:InventoryService ; ex:resultsIn ex:LL_IndexCheck .
+ex:CacheStampede a ex:Incident ; rdfs:label "Cache stampede" ; ex:affects ex:ProductCatalog .
+ex:LL_CertRenewal a ex:LessonLearned ; rdfs:label "Automate TLS certificate renewal" ; ex:updates ex:TD07 .
+ex:LL_IndexCheck  a ex:LessonLearned ; rdfs:label "Add performance test after migrations" ; ex:updates ex:TD04, ex:PP07 .
+
+# Documents (ids match data/documents.csv)
+ex:TD01 a ex:TechnicalDocumentation ; ex:docId "TD01" ; rdfs:label "Payments API Reference v3" ;
+    ex:describes ex:PaymentsAPI ; ex:about ex:Authentication ; ex:ownedBy ex:Engineering .
+ex:TD03 a ex:TechnicalDocumentation ; ex:docId "TD03" ; rdfs:label "Kubernetes Deployment Guide" ;
+    ex:describes ex:InventoryService ; ex:about ex:Deployment ; ex:ownedBy ex:Engineering .
+ex:TD04 a ex:TechnicalDocumentation ; ex:docId "TD04" ; rdfs:label "Database Schema for Inventory Service" ;
+    ex:describes ex:InventoryService ; ex:ownedBy ex:Engineering .
+ex:TD07 a ex:TechnicalDocumentation ; ex:docId "TD07" ; rdfs:label "Logging and Monitoring Setup" ;
+    ex:ownedBy ex:CloudOps .
+ex:TD10 a ex:TechnicalDocumentation ; ex:docId "TD10" ; rdfs:label "Caching Strategy for Product Catalog" ;
+    ex:describes ex:ProductCatalog ; ex:ownedBy ex:Engineering .
+ex:PP01 a ex:PolicyProcedure ; ex:docId "PP01" ; rdfs:label "Information Security Policy" ;
+    ex:governs ex:AccessManagement ; ex:about ex:InformationSecurity ; ex:ownedBy ex:Compliance .
+ex:PP02 a ex:PolicyProcedure ; ex:docId "PP02" ; rdfs:label "Remote Work Policy" ;
+    ex:governs ex:RemoteWorkProcess ; ex:about ex:RemoteWork ; ex:ownedBy ex:PeopleLearning .
+ex:PP07 a ex:PolicyProcedure ; ex:docId "PP07" ; rdfs:label "Change Management Procedure" ;
+    ex:governs ex:ChangeManagement ; ex:about ex:Deployment ; ex:ownedBy ex:CloudOps .
+ex:PR01 a ex:ProjectReport ; ex:docId "PR01" ; rdfs:label "Retail Platform Project Status Report - March" ;
+    ex:reportsOn ex:RetailPlatform ; ex:authoredBy ex:Luis ; ex:about ex:Budget ; ex:ownedBy ex:PMO .
+ex:PR10 a ex:ProjectReport ; ex:docId "PR10" ; rdfs:label "Budget Variance Report - Mobile Banking" ;
+    ex:reportsOn ex:MobileBanking ; ex:authoredBy ex:Luis ; ex:about ex:Budget ; ex:ownedBy ex:PMO .
+ex:TM01 a ex:TrainingManual ; ex:docId "TM01" ; rdfs:label "New Employee Onboarding Guide" ;
+    ex:about ex:Learning ; ex:ownedBy ex:PeopleLearning .
+ex:TM03 a ex:TrainingManual ; ex:docId "TM03" ; rdfs:label "Introduction to Kubernetes Training" ;
+    ex:teaches ex:KubernetesSkill ; ex:references ex:TD03 ; ex:about ex:Learning ; ex:ownedBy ex:PeopleLearning .
+ex:TM12 a ex:TrainingManual ; ex:docId "TM12" ; rdfs:label "Information Security Awareness Training" ;
+    ex:teaches ex:SecurityAwareness ; ex:references ex:PP01 ; ex:about ex:InformationSecurity ; ex:ownedBy ex:PeopleLearning .
+ex:IR01 a ex:IncidentReport ; ex:docId "IR01" ; rdfs:label "Post-mortem: Payments API Outage" ;
+    ex:documents ex:PaymentsOutage ; ex:references ex:TD01 ; ex:about ex:Outage ; ex:authoredBy ex:Ana ; ex:ownedBy ex:CloudOps .
+ex:IR02 a ex:IncidentReport ; ex:docId "IR02" ; rdfs:label "Security Incident: Phishing Campaign" ;
+    ex:references ex:PP01, ex:TM12 ; ex:about ex:InformationSecurity ; ex:ownedBy ex:CloudOps .
+ex:IR03 a ex:IncidentReport ; ex:docId "IR03" ; rdfs:label "Root Cause Analysis: Database Performance Degradation" ;
+    ex:documents ex:DbDegradation ; ex:references ex:TD04 ; ex:ownedBy ex:CloudOps .
+ex:IR10 a ex:IncidentReport ; ex:docId "IR10" ; rdfs:label "Post-mortem: Cache Stampede on Product Catalog" ;
+    ex:documents ex:CacheStampede ; ex:references ex:TD10 ; ex:about ex:Outage ; ex:ownedBy ex:CloudOps .

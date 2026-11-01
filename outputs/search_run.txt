@@ -1,0 +1,41 @@
+Indexed 60 documents, vocabulary of 2180 TF-IDF terms.
+
+Query: "how do I deploy a service to kubernetes"
+Matched terms: deploy, deploy servic, kubernet, servic, servic kubernet
+  1. [0.322] TD03 - Kubernetes Deployment Guide (Technical Documentation)
+  2. [0.155] TM03 - Introduction to Kubernetes Training (Training Manuals)
+  3. [0.133] TD02 - Microservices Architecture Overview (Technical Documentation)
+  4. [0.096] IR05 - Post-mortem: Failed Production Deployment (Incident Reports)
+  5. [0.051] IR11 - Incident Report: Third-Party Email Service Outage (Incident Reports)
+
+Query: "what happened when the payment system went down"
+Matched terms: incid, outag, payment, went
+  1. [0.197] IR01 - Post-mortem: Payments API Outage (Incident Reports)
+  2. [0.195] IR11 - Incident Report: Third-Party Email Service Outage (Incident Reports)
+  3. [0.168] IR04 - Incident Report: Data Center Network Failure (Incident Reports)
+  4. [0.090] IR06 - Incident: Unauthorized Access Attempt (Incident Reports)
+  5. [0.066] IR10 - Post-mortem: Cache Stampede on Product Catalog (Incident Reports)
+
+Query: "rules for working from home"
+Matched terms: home, polici, remot, remot work, rule, work, work polici
+  1. [0.426] PP02 - Remote Work Policy (Policies & Procedures)
+  2. [0.092] PP01 - Information Security Policy (Policies & Procedures)
+  3. [0.071] PR11 - Sprint 22 Retrospective - Payments Team (Project Reports)
+  4. [0.064] PP04 - Data Privacy and Personal Data Protection Policy (Policies & Procedures)
+  5. [0.048] TD07 - Logging and Monitoring Setup (Technical Documentation)
+
+Query: "course to learn security and avoid phishing"
+Matched terms: avoid, cours, cours learn, learn, phish, secur, train
+  1. [0.217] TM12 - Information Security Awareness Training (Training Manuals)
+  2. [0.168] TM02 - Git Fundamentals Course (Training Manuals)
+  3. [0.136] IR02 - Security Incident: Phishing Campaign (Incident Reports)
+  4. [0.112] TM05 - Agile and Scrum Training for Consultants (Training Manuals)
+  5. [0.091] TM08 - Python for Data Analysis Course (Training Manuals)
+
+Query: "is the project over budget"
+Matched terms: budget, project
+  1. [0.223] PR10 - Budget Variance Report - Mobile Banking (Project Reports)
+  2. [0.177] PR05 - Cloud Migration Project Closure Report (Project Reports)
+  3. [0.167] PR03 - Lessons Learned - Banking Portal Project (Project Reports)
+  4. [0.157] PR01 - Retail Platform Project Status Report - March (Project Reports)
+  5. [0.135] PR12 - Executive Summary - Digital Transformation Roadmap (Project Reports)

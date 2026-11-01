@@ -1,0 +1,7 @@
+id,title,text
+N01,Untitled upload 1,"The checkout service was down for 25 minutes after a certificate expired. Customers saw errors at payment and the on-call team rolled back the change. Root cause and corrective actions are listed below."
+N02,Untitled upload 2,"Employees must lock their screen when leaving the desk and must not share passwords. Breaking this rule will be handled by HR as a disciplinary matter."
+N03,Untitled upload 3,"The search service exposes a GET /v1/search endpoint that accepts a query parameter and returns paginated JSON results. Deploy it with the Helm chart in the platform namespace."
+N04,Untitled upload 4,"Module 3 of the course teaches how to write SQL queries. Complete the lab exercises and the quiz to earn your certificate."
+N05,Untitled upload 5,"The project is two weeks behind schedule. The budget spent is 70 percent and the client sponsor asked for a revised milestone plan at the next steering committee."
+N06,Untitled upload 6,"New team members should complete the onboarding lessons on Docker and Kubernetes before joining a client project. Each lesson has a hands-on lab."

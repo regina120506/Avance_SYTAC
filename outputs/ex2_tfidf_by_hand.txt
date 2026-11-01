@@ -1,0 +1,14 @@
+term        df     idf   tf-idf in doc1 / doc2 / doc3 (manual)
+and          1   1.693   0.000 / 0.000 / 0.490
+for          1   1.693   0.000 / 0.529 / 0.000
+outage       2   1.288   0.322 / 0.000 / 0.373
+passwords    1   1.693   0.000 / 0.529 / 0.000
+policy       1   1.693   0.000 / 0.529 / 0.000
+report       1   1.693   0.000 / 0.000 / 0.490
+restart      1   1.693   0.423 / 0.000 / 0.000
+review       1   1.693   0.000 / 0.000 / 0.490
+security     2   1.288   0.000 / 0.402 / 0.373
+server       1   1.693   0.847 / 0.000 / 0.000
+
+Manual result equals scikit-learn: True
+Note: 'server' appears twice in doc1 and only there, so it gets the highest weight (0.847).

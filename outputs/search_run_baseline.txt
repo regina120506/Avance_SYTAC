@@ -1,0 +1,35 @@
+Indexed 60 documents, vocabulary of 2369 TF-IDF terms.
+
+Query: "how do I deploy a service to kubernetes"
+Matched terms: deploy, deploy service, kubernetes, service, service kubernetes
+  1. [0.298] TD03 - Kubernetes Deployment Guide (Technical Documentation)
+  2. [0.106] TM03 - Introduction to Kubernetes Training (Training Manuals)
+  3. [0.078] TD02 - Microservices Architecture Overview (Technical Documentation)
+  4. [0.056] IR11 - Incident Report: Third-Party Email Service Outage (Incident Reports)
+  5. [0.049] TD04 - Database Schema for Inventory Service (Technical Documentation)
+
+Query: "what happened when the payment system went down"
+Matched terms: payment, went
+  1. [0.103] IR10 - Post-mortem: Cache Stampede on Product Catalog (Incident Reports)
+  2. [0.098] PR01 - Retail Platform Project Status Report - March (Project Reports)
+
+Query: "rules for working from home"
+Matched terms: home, rules
+  1. [0.109] PP02 - Remote Work Policy (Policies & Procedures)
+  2. [0.098] TD07 - Logging and Monitoring Setup (Technical Documentation)
+
+Query: "course to learn security and avoid phishing"
+Matched terms: avoid, course, course learn, learn, phishing, security
+  1. [0.188] TM02 - Git Fundamentals Course (Training Manuals)
+  2. [0.150] IR02 - Security Incident: Phishing Campaign (Incident Reports)
+  3. [0.127] TM12 - Information Security Awareness Training (Training Manuals)
+  4. [0.108] TM08 - Python for Data Analysis Course (Training Manuals)
+  5. [0.079] TM05 - Agile and Scrum Training for Consultants (Training Manuals)
+
+Query: "is the project over budget"
+Matched terms: budget, project
+  1. [0.227] PR10 - Budget Variance Report - Mobile Banking (Project Reports)
+  2. [0.203] PR05 - Cloud Migration Project Closure Report (Project Reports)
+  3. [0.173] PR01 - Retail Platform Project Status Report - March (Project Reports)
+  4. [0.169] PR03 - Lessons Learned - Banking Portal Project (Project Reports)
+  5. [0.141] PR06 - Project Kickoff Minutes - Insurance CRM (Project Reports)

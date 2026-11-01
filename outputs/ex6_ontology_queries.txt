@@ -1,0 +1,28 @@
+Ontology loaded: 372 triples
+
+Q1. Which document types exist?
+    Incident Reports
+    Policies & Procedures
+    Project Reports
+    Technical Documentation
+    Training Manuals
+
+Q2. Which documents relate to the Payments API (directly or through an incident)?
+    IR01 | Post-mortem: Payments API Outage | documents an incident on it
+    TD01 | Payments API Reference v3 | describes the system
+
+Q3. Which documents must be updated because of lessons learned from incidents?
+    Payments API outage (47 min) | Automate TLS certificate renewal | Logging and Monitoring Setup
+    Inventory DB degradation | Add performance test after migrations | Database Schema for Inventory Service
+    Inventory DB degradation | Add performance test after migrations | Change Management Procedure
+
+Q4. What should a new SRE read to operate Kubernetes? (skill -> training -> referenced docs)
+    Introduction to Kubernetes Training | Kubernetes Deployment Guide
+
+Q5. How many documents does each department own?
+    Cloud Operations | 6
+    Engineering | 4
+    People & Learning | 4
+    Project Management Office | 2
+    Compliance | 1
+

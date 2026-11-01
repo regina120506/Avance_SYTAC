@@ -1,0 +1,7 @@
+Representation                       Naive Bayes   Log. Regression        Linear SVM
+Bag of words (counts)                0.850 ±0.10       0.850 ±0.06       0.883 ±0.07
+TF-IDF unigrams                      0.817 ±0.08       0.883 ±0.11       0.900 ±0.08
+TF-IDF + stemming                    0.850 ±0.10       0.883 ±0.12       0.883 ±0.12
+TF-IDF + stemming + bigrams          0.817 ±0.08       0.900 ±0.12       0.867 ±0.11
+
+Values = mean accuracy over 5 folds (60 documents, 5 balanced categories).

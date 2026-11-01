@@ -1,0 +1,9 @@
+Original text:
+  Post-mortem: Payments API Outage. On May 3 the Payments API was unavailable for 47 minutes. The root cause was an expired TLS certificate on the load balancer. Customers could not complete purchases during the outage. Corrective actions include automatic certificate renewal and an expiration alert. 
+
+1) Whitespace tokens (45): ['Post-mortem:', 'Payments', 'API', 'Outage.', 'On', 'May', '3', 'the', 'Payments', 'API', 'was', 'unavailable'] ...
+2) Cleaned tokens   (44): ['post', 'mortem', 'payments', 'api', 'outage', 'on', 'may', 'the', 'payments', 'api', 'was', 'unavailable'] ...
+3) Stop words removed + Porter stemming (28): ['post', 'mortem', 'payment', 'api', 'outag', 'payment', 'api', 'unavail', 'minut', 'root', 'caus', 'expir'] ...
+
+Vocabulary of the 60-document collection: 986 words -> 704 stems (29% smaller)
+Top 10 stems: [('project', 22), ('data', 19), ('request', 18), ('team', 17), ('client', 16), ('servic', 13), ('secur', 13), ('employe', 13), ('approv', 12), ('report', 12)]

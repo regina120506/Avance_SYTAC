@@ -1,0 +1,16 @@
+Five most similar document pairs:
+  0.416  TD10 Caching Strategy for Product Catalog  <->  IR10 Post-mortem: Cache Stampede on Product Catalog
+  0.416  TD12 Message Queue Integration Guide  <->  IR07 Post-mortem: Message Queue Backlog
+  0.317  PP04 Data Privacy and Personal Data Protection Policy  <->  IR09 Incident: Accidental Data Exposure
+  0.307  TD03 Kubernetes Deployment Guide  <->  TM03 Introduction to Kubernetes Training
+  0.286  PR02 Sprint 14 Review - Logistics App  <->  PR11 Sprint 22 Retrospective - Payments Team
+
+Mean cosine similarity between categories (diagonal = within category):
+                           Technical   Policies &  Project Re  Training M  Incident R
+Technical Documentation         0.048       0.018       0.019       0.023       0.036
+Policies & Procedures           0.018       0.062       0.033       0.023       0.019
+Project Reports                 0.019       0.033       0.103       0.021       0.023
+Training Manuals                0.023       0.023       0.021       0.074       0.018
+Incident Reports                0.036       0.019       0.023       0.018       0.062
+
+Heatmap saved to outputs/similarity_heatmap.png

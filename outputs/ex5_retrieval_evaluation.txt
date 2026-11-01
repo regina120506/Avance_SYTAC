@@ -1,0 +1,12 @@
+Query                                               RR base   RR new
+how do I deploy a service to kubernetes                1.00     1.00
+what happened when the payment system went down        0.00     1.00
+rules for working from home                            1.00     1.00
+course to learn security and avoid phishing            0.33     1.00
+is the project over budget                             1.00     1.00
+login tokens and identity provider                     1.00     1.00
+the website broke after a release                      1.00     1.00
+who approves changes to production                     1.00     1.00
+
+Baseline TF-IDF                            P@3 = 0.375   MRR = 0.792
+TF-IDF + stemming + ontology expansion     P@3 = 0.417   MRR = 1.000
